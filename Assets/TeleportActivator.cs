@@ -21,7 +21,7 @@ public class TeleportActivator : MonoBehaviour
 
     private void Update()
     {
-        if (rayInteractor.gameObject.activeSelf && teleportActivate.action.ReadValue<float>() == 0)
+        if (rayInteractor.gameObject.activeSelf && teleportActivate.action.WasReleasedThisFrame())
         {
             rayInteractor.gameObject.SetActive(false);
         }
