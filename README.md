@@ -1,2 +1,2 @@
-# ai-vr-training-simulator
+# AI-Powered VR Training Simulator
 
