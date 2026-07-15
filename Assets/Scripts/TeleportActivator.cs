@@ -5,10 +5,18 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class TeleportActivator : MonoBehaviour
 {
     public InputActionProperty teleportActivate;
+    public XRRayInteractor teleportRayInteractor;
     public XRRayInteractor rayInteractor;
+
+    private void Start()
+    {
+        DisableTeleportRay();
+    }
+
     private void OnEnable()
     {
         teleportActivate.action.performed += ActivateTeleport;
+        rayInteractor.uiHoverEntered.AddListener(x => DisableTeleportRay());
     }
     private void OnDisable()
     {
@@ -16,14 +24,21 @@ public class TeleportActivator : MonoBehaviour
     }
     private void ActivateTeleport(InputAction.CallbackContext context)
     {
-        rayInteractor.gameObject.SetActive(true);
+        if (rayInteractor && rayInteractor.IsOverUIGameObject())
+            return;
+        teleportRayInteractor.gameObject.SetActive(true);
+    }
+
+    private void DisableTeleportRay()
+    {
+        teleportRayInteractor.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (rayInteractor.gameObject.activeSelf && teleportActivate.action.WasReleasedThisFrame())
+        if (teleportRayInteractor.gameObject.activeSelf && teleportActivate.action.WasReleasedThisFrame())
         {
-            rayInteractor.gameObject.SetActive(false);
+            DisableTeleportRay();
         }
     }
 }
