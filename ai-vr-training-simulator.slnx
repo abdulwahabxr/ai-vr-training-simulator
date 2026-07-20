@@ -73,6 +73,7 @@
   <Project Path="UnityEngine.XR.LegacyInputHelpers.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Runtime.Shared.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.004.csproj" />
